@@ -61,10 +61,12 @@ proc setup {file key} {
 
 proc get_cipher_provider {} {
    sqlite_orig db test.db
-    return [execsql {
-            PRAGMA key = 'test';
-            PRAGMA cipher_provider;
-    }];
+   execsql {
+     PRAGMA key = 'test';
+   }
+   return [execsql {
+     PRAGMA cipher_provider;
+   }];
 }
 
 proc if_built_with_openssl {name cmd expected} {
